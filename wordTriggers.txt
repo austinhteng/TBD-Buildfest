@@ -1,0 +1,110 @@
+[
+    {
+        "Word": "grass",
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": "Green"
+    },
+    {
+        "Word": "wet",
+        "Temperature": -1,
+        "Vibration": 0,
+        "Light": "Blue"
+    },
+    {
+        "Word": "pond",
+        "Temperature": -1,
+        "Vibration": 0,
+        "Light": "Blue"
+    },
+    {
+        "Word": "green",
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": "Green"
+    },
+    {
+        "Word": "clouds",
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": "White"
+    },
+    {
+        "Word": "clean",
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": "White"
+    },
+    {
+        "Word": "songs",
+        "Temperature": 0,
+        "Vibration": 1,
+        "Light": "0"
+    },
+    {
+        "Word": "rang",
+        "Temperature": 0,
+        "Vibration": 1,
+        "Light": "0"
+    },
+    {
+        "Word": "morning",
+        "Temperature": 1,
+        "Vibration": 0,
+        "Light": "Yellow"
+    },
+    {
+        "Word": "trees",
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": "Green"
+    },
+    {
+        "Word": "bright-colored",
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": "White"
+    },
+    {
+        "Word": "breeze",
+        "Temperature": -1,
+        "Vibration": 1,
+        "Light": "0"
+    },
+    {
+        "Word": "brown",
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": "Brown"
+    },
+    {
+        "Word": "shade",
+        "Temperature": -1,
+        "Vibration": 0,
+        "Light": "Black"
+    },
+    {
+        "Word": "fruits",
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": "Red"
+    },
+    {
+        "Word": "ripple",
+        "Temperature": 0,
+        "Vibration": 1,
+        "Light": "0"
+    },
+    {
+        "Word": "humming",
+        "Temperature": 0,
+        "Vibration": 1,
+        "Light": "0"
+    },
+    {
+        "Word": "splashing",
+        "Temperature": -1,
+        "Vibration": 1,
+        "Light": "0"
+    }
+]

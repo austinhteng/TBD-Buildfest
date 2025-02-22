@@ -21,16 +21,6 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--root', type=str, # no default=None,
                 help='Root directory where the Whisper models are downloaded to.')
 
-    from install_packages import check_and_install_packages
-    check_and_install_packages([
-        {
-            'import_name': 'rich',
-        },
-        {
-            'import_name': 'pyautogui',
-        }        
-    ])
-
     if EXTENDED_LOGGING:
         import logging
         logging.basicConfig(level=logging.DEBUG)
@@ -50,6 +40,8 @@ if __name__ == '__main__':
     from colorama import Fore, Style
     import colorama
     import pyautogui
+
+    
 
     if os.name == "nt" and (3, 8) <= sys.version_info < (3, 99):
         from torchaudio._extension.utils import _init_dll_path
@@ -107,6 +99,9 @@ if __name__ == '__main__':
             recorder.post_speech_silence_duration = unknown_sentence_detection_pause
 
         prev_text = text
+
+        # console.log(text[text.rfind(' ')+1:])         Notes: the code likely passes the full sentence through a NN to interpret, therefore can't rely on last word.
+        searchTriggerWords(text)
 
         # Build Rich Text with alternating colors
         rich_text = Text()
@@ -203,6 +198,29 @@ if __name__ == '__main__':
     
     initial_text = Panel(Text("Say something...", style="cyan bold"), title="[bold yellow]Waiting for Input[/bold yellow]", border_style="bold yellow")
     live.update(initial_text)
+
+    import string
+    from time import sleep
+    from datafeel.device import VibrationMode, discover_devices, LedMode, ThermalMode, VibrationWaveforms
+    devices = discover_devices(4)
+    print(len(devices))
+    device = devices[0]
+
+    def searchTriggerWords(text):
+        wordBank = {"blue", "green", "rain", "hot", "cold", "shake"}
+        trg = text.maketrans("", "", string.punctuation)
+        tokens = text.translate(trg).lower().split()
+        
+        for token in tokens:
+            if token in wordBank:
+                console.log(text)
+
+                if token == "cold":
+                    device.set_led(0, 0, 255)
+                if token == "hot":
+                    device.set_led(255, 0, 0)
+
+                return
 
     try:
         while True:
