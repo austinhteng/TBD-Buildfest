@@ -102,6 +102,7 @@ if __name__ == '__main__':
 
         # console.log(text[text.rfind(' ')+1:])         Notes: the code likely passes the full sentence through a NN to interpret, therefore can't rely on last word.
         searchTriggerWords(text)
+        checkToStop()
 
         # Build Rich Text with alternating colors
         rich_text = Text()
@@ -202,29 +203,76 @@ if __name__ == '__main__':
     import string
     from time import sleep
     from datafeel.device import VibrationMode, discover_devices, LedMode, ThermalMode, VibrationWaveforms
+
+    import json
+
+    
+
     devices = discover_devices(4)
     print(len(devices))
     device = devices[0]
 
+    def loadTriggerWords():
+        with open('wordTriggers.json') as f:
+            return json.load(f)
+        
+    wordBankTest = loadTriggerWords()
+
+    
+    import time
+    running = False
+    start_time = 0.0
+
+    def checkToStop():
+        global running, start_time
+        if running and time.time() - start_time > 1:
+            console.log("STOPPING")
+            running = False
+
+            for d in devices:
+                d.stop_vibration()
+                d.set_led(0, 0, 0)
+                d.disable_all_thermal()
+
     def searchTriggerWords(text):
-        wordBank = {"blue", "green", "rain", "hot", "cold", "shake"}
+        global start_time, running
         trg = text.maketrans("", "", string.punctuation)
         tokens = text.translate(trg).lower().split()
         
         for token in tokens:
-            if token in wordBank:
+            if token in wordBankTest:
+                device.registers.set_led_mode(LedMode.GLOBAL_MANUAL)
+                device.registers.set_vibration_mode(VibrationMode.LIBRARY)
+
+
                 console.log(text)
+                temperature = wordBankTest[token]['Temperature']
+                vibration = wordBankTest[token]['Vibration']
+                light = wordBankTest[token]['Light']
 
-                if token == "cold":
-                    device.set_led(0, 0, 255)
-                if token == "hot":
-                    device.set_led(255, 0, 0)
+                ind = 0
+                for d in devices:
+                    console.log(ind)
+                    ind = ind + 1
+                    d.play_frequency(250, vibration)
+                    d.set_led(light[0], light[1], light[2])
+                    d.activate_thermal_intensity_control(temperature) # Heating
 
+
+                # device.play_frequency(250, vibration)
+                # device.set_led(light[0], light[1], light[2])
+                # device.activate_thermal_intensity_control(temperature) # Heating
+                start_time = time.time()
+                running = True
                 return
+    
+    
 
     try:
         while True:
             recorder.text(process_text)
+            checkToStop()
+
     except KeyboardInterrupt:
         live.stop()
         console.print("[bold red]Transcription stopped by user. Exiting...[/bold red]")

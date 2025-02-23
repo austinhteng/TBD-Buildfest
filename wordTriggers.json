@@ -1,110 +1,87 @@
-[
-    {
-        "Word": "grass",
+{
+    "grass": {
         "Temperature": 0,
         "Vibration": 0,
-        "Light": "Green"
+        "Light": [106, 159, 58]
     },
-    {
-        "Word": "wet",
+    "wet": {
         "Temperature": -1,
         "Vibration": 0,
-        "Light": "Blue"
+        "Light": [56, 173, 250]
     },
-    {
-        "Word": "pond",
+    "pond": {
         "Temperature": -1,
         "Vibration": 0,
-        "Light": "Blue"
+        "Light": [56, 173, 250]
     },
-    {
-        "Word": "green",
+    "green": {
         "Temperature": 0,
         "Vibration": 0,
-        "Light": "Green"
+        "Light": [106, 159, 58]
     },
-    {
-        "Word": "clouds",
+    "clouds": {
         "Temperature": 0,
         "Vibration": 0,
-        "Light": "White"
+        "Light": [255, 255, 255]
     },
-    {
-        "Word": "clean",
+    "clean": {
         "Temperature": 0,
         "Vibration": 0,
-        "Light": "White"
+        "Light": [255, 255, 255]
     },
-    {
-        "Word": "songs",
+    "songs": {
         "Temperature": 0,
         "Vibration": 1,
-        "Light": "0"
+        "Light": [0, 0, 0]
     },
-    {
-        "Word": "rang",
+    "rang": {
         "Temperature": 0,
         "Vibration": 1,
-        "Light": "0"
+        "Light": [0, 0, 0]
     },
-    {
-        "Word": "morning",
+    "morning": {
         "Temperature": 1,
         "Vibration": 0,
-        "Light": "Yellow"
+        "Light": [255, 254, 133]
     },
-    {
-        "Word": "trees",
+    "trees": {
         "Temperature": 0,
         "Vibration": 0,
-        "Light": "Green"
+        "Light": [0, 128, 0]
     },
-    {
-        "Word": "bright-colored",
+    "breeze": {
         "Temperature": 0,
-        "Vibration": 0,
-        "Light": "White"
-    },
-    {
-        "Word": "breeze",
-        "Temperature": -1,
         "Vibration": 1,
-        "Light": "0"
+        "Light": [0, 0, 0]
     },
-    {
-        "Word": "brown",
+    "brown": {
         "Temperature": 0,
         "Vibration": 0,
-        "Light": "Brown"
+        "Light": [139, 69, 19]
     },
-    {
-        "Word": "shade",
+    "shade": {
         "Temperature": -1,
         "Vibration": 0,
-        "Light": "Black"
+        "Light": [50, 50, 50]
     },
-    {
-        "Word": "fruits",
+    "fruits": {
         "Temperature": 0,
         "Vibration": 0,
-        "Light": "Red"
+        "Light": [255, 0, 0]
     },
-    {
-        "Word": "ripple",
+    "ripple": {
         "Temperature": 0,
         "Vibration": 1,
-        "Light": "0"
+        "Light": [0, 0, 0]
     },
-    {
-        "Word": "humming",
+    "humming": {
         "Temperature": 0,
         "Vibration": 1,
-        "Light": "0"
+        "Light": [0, 0, 0]
     },
-    {
-        "Word": "splashing",
-        "Temperature": -1,
+    "splashing": {
+        "Temperature": 0,
         "Vibration": 1,
-        "Light": "0"
+        "Light": [56, 173, 250]
     }
-]
+}
