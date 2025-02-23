@@ -234,6 +234,30 @@ if __name__ == '__main__':
                 d.set_led(0, 0, 0)
                 d.disable_all_thermal()
 
+
+    tree_colors = [[252, 97, 130],
+     [255, 255, 0],
+     [139, 69, 19],
+     [251, 125, 173],
+     [142, 94, 146]]
+    
+    fruit_colors = [[255, 0, 0],
+                    [255, 255, 0],
+                    [139, 69, 19],
+                    [56, 173, 250],
+                    [113, 44, 72]]
+    
+    ripple_sequence = [
+        VibrationWaveforms.STRONG_CLICK1_P100,
+        VibrationWaveforms.Rest(0.5),
+        VibrationWaveforms.STRONG_CLICK3_P60,
+        VibrationWaveforms.Rest(0.5),
+        VibrationWaveforms.STRONG_CLICK4_P30,
+        VibrationWaveforms.Rest(0.5),
+        VibrationWaveforms.END_SEQUENCE,
+    ]
+
+    import random
     def searchTriggerWords(text):
         global start_time, running
         trg = text.maketrans("", "", string.punctuation)
@@ -250,12 +274,37 @@ if __name__ == '__main__':
                 vibration = wordBankTest[token]['Vibration']
                 light = wordBankTest[token]['Light']
 
-                ind = 0
                 for d in devices:
-                    console.log(ind)
-                    ind = ind + 1
-                    d.play_frequency(250, vibration)
-                    d.set_led(light[0], light[1], light[2])
+                    match token:    # Color symbols
+                        case 'trees':
+                            color_ind = random.randrange(len(tree_colors))
+                            d.set_led(tree_colors[color_ind][0], tree_colors[color_ind][1], tree_colors[color_ind][2])
+                        case 'fruits':
+                            color_ind = random.randrange(len(fruit_colors))
+                            d.set_led(fruit_colors[color_ind][0], fruit_colors[color_ind][1], fruit_colors[color_ind][2])
+                        case _:
+                            d.set_led(light[0], light[1], light[2])
+                    
+                    match token:    # Vibration
+                        case 'splashing':
+                            d.play_vibration_sequence(ripple_sequence)
+                        case 'rang':
+                            d.play_vibration_sequence(ripple_sequence)
+                        case 'sneeze':
+                            d.play_vibration_sequence([VibrationWaveforms.STRONG_CLICK1_P100,
+                                                       VibrationWaveforms.Rest(1),
+                                                       VibrationWaveforms.END_SEQUENCE,])
+                        case 'humming':
+                            d.play_vibration_sequence([VibrationWaveforms.SMOOTH_HUM_P50,
+                                                       VibrationWaveforms.Rest(0.5),
+                                                       VibrationWaveforms.SMOOTH_HUM_P50,
+                                                       VibrationWaveforms.Rest(0.5),
+                                                       VibrationWaveforms.SMOOTH_HUM_P50,
+                                                       VibrationWaveforms.Rest(0.5),
+                                                       VibrationWaveforms.END_SEQUENCE,])
+                        case _:
+                            d.play_frequency(250, vibration)
+
                     d.activate_thermal_intensity_control(temperature) # Heating
 
 

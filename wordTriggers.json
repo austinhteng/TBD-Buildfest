@@ -83,5 +83,15 @@
         "Temperature": 0,
         "Vibration": 1,
         "Light": [56, 173, 250]
+    },
+    "lorax": {
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": [139, 69, 19]
+    },
+    "sneeze": {
+        "Temperature": 1,
+        "Vibration": 1,
+        "Light": [0, 0, 190]
     }
 }
