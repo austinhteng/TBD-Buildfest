@@ -1,4 +1,9 @@
 {
+    "stop": {
+        "Temperature": 0,
+        "Vibration": 0,
+        "Light": [0, 0, 0]
+    },
     "grass": {
         "Temperature": 0,
         "Vibration": 0,

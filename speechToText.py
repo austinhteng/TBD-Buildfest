@@ -39,7 +39,6 @@ if __name__ == '__main__':
     from RealtimeSTT import AudioToTextRecorder
     from colorama import Fore, Style
     import colorama
-    import pyautogui
 
     
 
@@ -141,8 +140,6 @@ if __name__ == '__main__':
         prev_text = ""
         text_detected("")
 
-        if WRITE_TO_KEYBOARD_INTERVAL:
-            pyautogui.write(f"{text} ", interval=WRITE_TO_KEYBOARD_INTERVAL)  # Adjust interval as needed
 
     # Recorder configuration
     recorder_config = {
@@ -262,7 +259,7 @@ if __name__ == '__main__':
         global start_time, running
         trg = text.maketrans("", "", string.punctuation)
         tokens = text.translate(trg).lower().split()
-        
+        tokens = tokens[::-1]
         for token in tokens:
             if token in wordBankTest:
                 device.registers.set_led_mode(LedMode.GLOBAL_MANUAL)
