@@ -45,7 +45,7 @@
         "Light": [0, 0, 0]
     },
     "morning": {
-        "Temperature": 1,
+        "Temperature": 0.5,
         "Vibration": 0,
         "Light": [255, 254, 133]
     },
@@ -95,7 +95,7 @@
         "Light": [139, 69, 19]
     },
     "sneeze": {
-        "Temperature": 1,
+        "Temperature": 0.5,
         "Vibration": 1,
         "Light": [0, 0, 190]
     }
